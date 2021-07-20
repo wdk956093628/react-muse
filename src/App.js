@@ -1,13 +1,17 @@
-import './App.css'
+import React, { Component } from 'react'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        hello
-      </header>
-    </div>
-  )
+import Index from './pages/Index/index'
+class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route path='/' component={Index} />
+        </Switch>
+      </BrowserRouter>
+    )
+  }
 }
 
 export default App
