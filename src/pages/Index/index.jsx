@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Layout } from 'antd'
 
-const { Header, Footer, Content } = Layout
+import Header from '../../components/Header'
 
 class Index extends Component {
   state = {
@@ -10,9 +10,7 @@ class Index extends Component {
   render() {
     return (
       <Layout style={{ height: '100vh' }}>
-        <Header>Header</Header>
-        <Content>Content</Content>
-        <Footer>Footer</Footer>
+        <Header />
       </Layout>
     )
   }
