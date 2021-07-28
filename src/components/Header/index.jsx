@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
-import { Layout, Menu } from 'antd'
+import { Layout, Menu, Avatar } from 'antd'
+import { Link } from 'react-router-dom'
 
 const { Header } = Layout
 
-// import styles from './index.less'
+import styles from './index.module.less'
 
-class Index extends Component {
+import logo from '../../assets/img/icon/logo.png'
+import avatar from '../../assets/img/icon/avatar.png'
+
+class HeaderIndex extends Component {
 	state = {
 		currentMenu: 'home'
 	}
@@ -20,17 +24,29 @@ class Index extends Component {
 			{ label: 'Contact', key: 'contact' }
 		]
 		return (
-			<Header>
-				<Menu mode='horizontal' selectedKeys={[currentMenu]}>
-					{
-            menu.map((item) => {
-              return <Menu.Item key={item.key}>{item.label}</Menu.Item>
-            })
-          }
-				</Menu>
+			<Header className={styles.header}>
+				<div className={styles.headerWrapper}>
+					<div className={styles.logo}>
+						<Link to="/" className={styles.logoLink}>
+							<img src={logo} alt='logo' />
+							<span>NFT MUSE</span>
+						</Link>
+					</div>
+					<Menu mode='horizontal' defaultSelectedKeys={[currentMenu]} className={styles.menu}>
+						{
+							menu.map((item) => {
+								return <Menu.Item key={item.key}>{item.label}</Menu.Item>
+							})
+						}
+					</Menu>
+					<div className={styles.person}>
+						<span>Connect your wallet</span>
+						<Avatar size={36} src={avatar} alt='avatar' />
+					</div>
+				</div>
 			</Header>
 		)
 	}
 }
 
-export default Index
+export default HeaderIndex

@@ -1,0 +1,52 @@
+.header {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  &Wrapper {
+    width: 1400px;
+    display: flex;
+    justify-content: space-between
+  }
+}
+
+.logo {
+  // float: left;
+  &Link {
+    display: flex;
+    align-items: center;
+  }
+  img {
+    width: 32px;
+    height: 32px;
+  }
+  span {
+    margin-left: 10px;
+    font-size: 18px;
+    font-family: Avenir-Medium, Avenir;
+    font-weight: 500;
+    color: #000000;
+  }
+}
+
+.person {
+  display: flex;
+  align-items: center;
+  & > span {
+    margin-right: 13px;
+    font-size: 18px;
+    font-family: Avenir-Medium, Avenir;
+    font-weight: 500;
+    color: #000000;
+  }
+}
+
+:global {
+  .ant-menu {
+    font-size: 16px;
+    font-family: Avenir-Medium, Avenir;
+    font-weight: 500;
+    color: rgba(0, 0, 0, .4);
+    border-bottom: none;
+    justify-content: center;
+  }
+}

@@ -55,7 +55,7 @@
       "multiline-ternary": [1, "always-multiline"],
       "new-cap": [2, { "capIsNew": false }],
       "no-trailing-spaces": 0,
-      "semi": ["error", "never"],
+      "semi": ["warn", "never"],
       "space-before-blocks": 2,
       "space-in-parens": 2,
       "spaced-comment": 2,

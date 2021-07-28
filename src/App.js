@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import 'antd/dist/antd.css'
+import './App.css'
 
 import Index from './pages/Index/index'
 class App extends Component {

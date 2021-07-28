@@ -140,22 +140,42 @@ module.exports = function (webpackEnv) {
         },
       },
     ].filter(Boolean);
+    // if (preProcessor) {
+    //   loaders.push(
+    //     {
+    //       loader: require.resolve('resolve-url-loader'),
+    //       options: {
+    //         sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment,
+    //         root: paths.appSrc,
+    //       },
+    //     },
+    //     {
+    //       loader: require.resolve(preProcessor),
+    //       options: {
+    //         sourceMap: true,
+    //       },
+    //     }
+    //   );
+    // }
+    //  自定义主题
     if (preProcessor) {
-      loaders.push(
-        {
-          loader: require.resolve('resolve-url-loader'),
+      let loader = require.resolve(preProcessor)
+      if (preProcessor === "less-loader") {
+        loader = {
+          loader,
           options: {
-            sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment,
-            root: paths.appSrc,
-          },
-        },
-        {
-          loader: require.resolve(preProcessor),
-          options: {
-            sourceMap: true,
-          },
+            modifyVars: {
+              'primary-color': '#0EBC79', // 全局主色
+              'link-color': '#0EBC79', // 链接色
+              'heading-color': 'rgba(0, 0, 0, 1)', // 标题色
+              // 'text-color': 'rgba(0, 0, 0, 0.4)', // 主文本色
+              // 'text-color-secondary': 'rgba(0, 0, 0, 0.6)', // 次文本色
+            },
+            javascriptEnabled: true,
+          }
         }
-      );
+      }
+      loaders.push(loader);
     }
     return loaders;
   };
@@ -336,6 +356,9 @@ module.exports = function (webpackEnv) {
           'scheduler/tracing': 'scheduler/tracing-profiling',
         }),
         ...(modules.webpackAliases || {}),
+        // 文件路径别名配置
+        '@': path.resolve(__dirname, '../src'),
+        '@public': path.resolve(__dirname, '../public')
       },
       plugins: [
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding
@@ -550,8 +573,9 @@ module.exports = function (webpackEnv) {
               use: getStyleLoaders(
                 {
                   importLoaders: 2,
-                  modules: true,
-                  getLocalIdent: getCSSModuleLocalIdent,
+                  modules: {
+                    getLocalIdent: getCSSModuleLocalIdent,
+                  },
                 },
                 'less-loader'
               ),

@@ -1,0 +1,6 @@
+@import '~antd/dist/antd.css';
+
+@font-face {
+  font-family:'Avenir-Medium';
+  src:url('./assets/font/Avenir-Medium.otf');
+}
