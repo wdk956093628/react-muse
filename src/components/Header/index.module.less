@@ -40,6 +40,57 @@
   }
 }
 
+.personModal {
+  width: 340px;
+  height: 183px;
+  font-size: 20px;
+  font-family: Avenir-Medium, Avenir;
+  font-weight: 500;
+  color: #000000;
+  &Name {
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &Balance {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    &_container {
+      margin-left: 8px;
+      display: flex;
+      flex-direction: column;
+    }
+    &_label {
+      display: flex;
+      font-size: 16px;
+      font-family: Avenir-Medium, Avenir;
+      font-weight: 500;
+      color: #000000;
+      line-height: 22px;
+    }
+    &_content {
+      margin-top: 4px;
+      font-size: 16px;
+      font-family: Avenir-Heavy, Avenir;
+      font-weight: 800;
+      color: #000000;
+      line-height: 22px;
+      & > span:last-child {
+        margin-left: 28px;
+        font-family: Avenir-Medium, Avenir;
+        font-weight: 500;
+      }
+    }
+  }
+  &Disconnect {
+    &_btn {
+      
+    }
+  }
+}
+
 :global {
   .ant-menu {
     font-size: 16px;
@@ -48,5 +99,11 @@
     color: rgba(0, 0, 0, .4);
     border-bottom: none;
     justify-content: center;
+  }
+  .ant-popover-inner {
+    border-radius: 8px;
+    .ant-popover-inner-content {
+      padding: 30px;
+    }
   }
 }

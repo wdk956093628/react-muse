@@ -1,13 +1,39 @@
 import React, { Component } from 'react'
-import { Layout, Menu, Avatar } from 'antd'
 import { Link } from 'react-router-dom'
-
+import { Layout, Menu, Avatar, Popover, Button, Divider } from 'antd'
 const { Header } = Layout
+
+import { CopyOutlined } from '@ant-design/icons'
 
 import styles from './index.module.less'
 
 import logo from '../../assets/img/icon/logo.png'
 import avatar from '../../assets/img/icon/avatar.png'
+
+import LoginModal from '../LoginModal'
+
+const personModal = (
+	<div className={styles.personModal}>
+		<div className={styles.personModalName}>
+			<span>0x5455555...fhs1</span>
+			<Button type="text" shape="circle" icon={<CopyOutlined style={{color: '#0EBC79'}} />} />
+		</div>
+		<div className={styles.personModalBalance}>
+			<Avatar size={44} src={avatar} alt='avatar' />
+			<div className={styles.personModalBalance_container}>
+				<div className={styles.personModalBalance_label}>Balance</div>
+				<div className={styles.personModalBalance_content}>
+					<span>7894.23 MRC</span>
+					<span>$18.14</span>
+				</div>
+			</div>
+		</div>
+		<Divider />
+		<div className={styles.personModalDisconnect}>
+			<Button shape="round" block style={{ height: '40px', color: '#FF6A51', borderColor: '#FF6A51' }}>Disconnect</Button>
+		</div>
+	</div>
+)
 
 class HeaderIndex extends Component {
 	state = {
@@ -39,11 +65,14 @@ class HeaderIndex extends Component {
 							})
 						}
 					</Menu>
-					<div className={styles.person}>
-						<span>Connect your wallet</span>
-						<Avatar size={36} src={avatar} alt='avatar' />
-					</div>
+					<Popover content={personModal} placement='bottomRight' trigger='click'>
+						<div className={styles.person}>
+							<span>Connect your wallet</span>
+							<Avatar size={36} src={avatar} alt='avatar' />
+						</div>
+					</Popover>
 				</div>
+				<LoginModal />
 			</Header>
 		)
 	}
