@@ -1,14 +1,63 @@
 .loginModal {
+  &Side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 235px;
+    height: 400px;
+    border-radius: 8px;
+    & > img {
+      margin-top: 95px;
+      width: 60px;
+    }
+    & > p {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 18px;
+      font-family: Avenir-Heavy, Avenir;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+  }
 
   &Container {
     width: 365px;
     height: 100%;
+    padding-bottom: 50px;
   }
-  :global {
-    .ant-modal-content {
-      border-radius: 8px;
-      border-bottom-left-radius: 10px;
-      border-top-left-radius: 10px;
+  &Title {
+    font-size: 20px;
+    font-family: Avenir-Medium, Avenir;
+    font-weight: 500;
+    color: #000000;
+    text-indent: 50px;
+    margin-top: 45px;
+    margin-bottom: 22px;
+  }
+  &Content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &TypeItem {
+    margin: 12px 0;
+    img {
+      width: 24px;
+      height: 24px;
     }
+    :global {
+      .ant-btn {
+        width: 262px;
+        height: 42px;
+      }
+    }
+  }
+}
+
+:global {
+  .ant-modal-content {
+    border-radius: 8px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
   }
 }
